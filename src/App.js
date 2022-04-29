@@ -61,12 +61,37 @@ function App() {
   }
 
   // process the letter input
-  function verifyLetter() {
-    setGameStage(stages[0].name);
-  }
+  function verifyLetter(letter) {
+    const normalizedLetter = letter.toLowerCase();
+
+    // check if letter has already been initialized
+    if (
+      guessedLetters.includes(normalizedLetter)
+      ||
+      wrongLetters.includes(normalizedLetter)
+    ) {
+      return;
+    }
+
+    // push guessed letter or remove a guess
+    if (letters.includes(normalizedLetter)) {
+      setGuessedLetters((actualGuessedLetters) => [
+        ...actualGuessedLetters,
+        normalizedLetter
+      ]);
+    } else {
+      setWrongLetters((actualWrongLetters) => [
+        ...actualWrongLetters,
+        normalizedLetter
+      ]);
+    }
+  };
+
+  console.log(guessedLetters);
+  console.log(wrongLetters);
 
   const retry = () => {
-    setGameStage(stages[1].name)
+    setGameStage(stages[0].name)
   }
 
   console.log(words);
