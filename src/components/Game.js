@@ -1,10 +1,11 @@
 import { useRef, useState } from 'react'
+
+// CSS
 import './Game.css'
 
 const Game = ({
   verifyLetter,
   pickedCategory,
-  pickedWord,
   letters,
   guessedLetters,
   wrongLetters,
@@ -20,7 +21,7 @@ const Game = ({
     verifyLetter(letter);
 
     setLetter('');
-    
+
     letterInputRef.current.focus();
   }
 
